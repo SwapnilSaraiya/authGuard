@@ -1,0 +1,38 @@
+<div class="bg-image">
+    <img src="../../assets/bg3.webp" >
+</div>
+<div class="content">
+    <form class="formdata" [formGroup]="loginForm">
+    <div class="form-heading">
+         <h2>Login Form</h2>
+        </div>
+        <mat-form-field class="example-full-width " appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              password is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+          <div class="button">
+          <button type="submit" mat-button color="primary" (click)="loginSubmit()">Login</button>
+          
+        </div>
+        <div class="button">
+        <a color="primary" routerLink='/signUp'>Create an account ? SignUp</a>
+        </div>
+      </form>
+</div>
+
